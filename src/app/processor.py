@@ -14,14 +14,16 @@ logger = setup_logger(__name__)
 
 
 def validate_input_message(message: dict[str, Any]) -> ValidatedMessage:
-    """
-    Validate the incoming raw message against the expected schema.
+    """Validate the incoming raw message against the expected schema.
 
-    Parameters:
+    Parameters
+    ----------
         message (dict[str, Any]): The raw message payload.
 
-    Returns:
+    Returns
+    -------
         ValidatedMessage: A validated message object.
+
     """
     logger.debug("🔍 Validating message schema...")
     if not validate_message_schema(message):
@@ -31,18 +33,20 @@ def validate_input_message(message: dict[str, Any]) -> ValidatedMessage:
 
 
 def compute_alpha_signal(message: ValidatedMessage) -> dict[str, Any]:
-    """
-    Compute an alpha signal from the validated input message.
+    """Compute an alpha signal from the validated input message.
 
     This function represents placeholder logic for an alpha factor model.
     Actual implementations may involve financial ratios, time-series signals,
     or multi-factor models.
 
-    Parameters:
+    Parameters
+    ----------
         message (ValidatedMessage): The validated message input.
 
-    Returns:
+    Returns
+    -------
         dict[str, Any]: Dictionary with alpha-related data.
+
     """
     logger.debug("📊 Computing alpha factor for %s", message["symbol"])
     alpha_score = 1.0  # Placeholder value
@@ -55,14 +59,16 @@ def compute_alpha_signal(message: ValidatedMessage) -> dict[str, Any]:
 
 
 def process_message(raw_message: dict[str, Any]) -> ValidatedMessage:
-    """
-    Main entry point for processing a single message.
+    """Main entry point for processing a single message.
 
-    Parameters:
+    Parameters
+    ----------
         raw_message (dict[str, Any]): Raw input from the message queue.
 
-    Returns:
+    Returns
+    -------
         ValidatedMessage: Enriched and validated message ready for output.
+
     """
     logger.info("🚦 Processing new message...")
     validated = validate_input_message(raw_message)
